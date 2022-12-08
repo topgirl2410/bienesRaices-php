@@ -4,7 +4,6 @@ include './includes/templates/header.php';
 
 <main class="contenedor seccion contenido-centrado">
     <h1>Nuestro Blog</h1>
-
     <article class="entrada-blog">
         <div class="imagen">
             <picture>
@@ -17,10 +16,11 @@ include './includes/templates/header.php';
         <div class="texto-entrada">
             <a href="entrada.php">
                 <h4>Terraza en el techo de tu casa</h4>
-                <p>Escrito el: <span>20/10/2021</span> por: <span>Admin</span> </p>
+                <p>Escrito el: <span>20/08/21</span> Por: <span>María Pinto</span></p>
 
                 <p>
-                    Consejos para construir una terraza en el techo de tu casa con los mejores materiales y ahorrando dinero
+                    Consejos para construir una terraza en el techo de tu casa con los mejores materiales y
+                    ahorrando dinero.
                 </p>
             </a>
         </div>
@@ -38,15 +38,15 @@ include './includes/templates/header.php';
         <div class="texto-entrada">
             <a href="entrada.php">
                 <h4>Guía para la decoración de tu hogar</h4>
-                <p>Escrito el: <span>20/10/2021</span> por: <span>Admin</span> </p>
+                <p>Escrito el: <span>24/10/21</span> Por: <span>María Pinto</span></p>
 
                 <p>
-                    Maximiza el espacio en tu hogar con esta guia, aprende a combinar muebles y colores para darle vida a tu espacio
+                    Maximiza el espacio en tu hogar con esta guía, aprende a combinar muebles y colores para
+                    darle vida a tu espacio.
                 </p>
             </a>
         </div>
     </article>
-
     <article class="entrada-blog">
         <div class="imagen">
             <picture>
@@ -58,11 +58,11 @@ include './includes/templates/header.php';
 
         <div class="texto-entrada">
             <a href="entrada.php">
-                <h4>Terraza en el techo de tu casa</h4>
-                <p>Escrito el: <span>20/10/2021</span> por: <span>Admin</span> </p>
+                <h4>Colores en el Aire</h4>
+                <p>Escrito el: <span>20/08/21</span> Por: <span>Marco Castro</span></p>
 
                 <p>
-                    Consejos para construir una terraza en el techo de tu casa con los mejores materiales y ahorrando dinero
+                    Decora con colores y estilos lujosos, aquí te enseñamos como hacerlo...
                 </p>
             </a>
         </div>
@@ -78,21 +78,16 @@ include './includes/templates/header.php';
         </div>
 
         <div class="texto-entrada">
-            <a href="entrada.php">
-                <h4>Guía para la decoración de tu hogar</h4>
-                <p>Escrito el: <span>20/10/2021</span> por: <span>Admin</span> </p>
+            <a href="entrada.html">
+                <h4>Ideas de Interiorismo</h4>
+                <p>Escrito el: <span>24/05/21</span> Por: <span>Lucia Sanchez</span></p>
 
                 <p>
-                    Maximiza el espacio en tu hogar con esta guia, aprende a combinar muebles y colores para darle vida a tu espacio
+                    Aprende de los Mejores Decoradores del Mundo, Ideas sencillas a buen Precio
                 </p>
             </a>
         </div>
     </article>
 </main>
 
-<?php include './includes/template/footer.php'; ?>
-
-<script src="build/js/bundle.min.js"></script>
-</body>
-
-</html>
+<?php include './includes/templates/footer.php'; ?>

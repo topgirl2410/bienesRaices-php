@@ -5,9 +5,5 @@ include './includes/templates/header.php';
     <h1>Titulo Página</h1>
 </main>
 
-<?php include './includes/template/footer.php'; ?>
+<?php include './includes/templates/footer.php'; ?>
 
-<script src="build/js/bundle.min.js"></script>
-</body>
-
-</html>

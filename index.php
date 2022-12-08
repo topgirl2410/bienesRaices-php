@@ -207,9 +207,5 @@ include './includes/templates/header.php';
     </section>
 </div>
 
-<?php include './includes/template/footer.php'; ?>
+<?php include './includes/templates/footer.php'; ?>
 
-<script src="build/js/bundle.min.js"></script>
-</body>
-
-</html>

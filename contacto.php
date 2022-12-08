@@ -2,80 +2,71 @@
 include './includes/templates/header.php';
 ?>
 
-<main class="contenedor seccion">
+<main class="contenedor">
     <h1>Contacto</h1>
-
     <picture>
-        <source srcset="build/img/destacada3.webp" type="image/webp">
-        <source srcset="build/img/destacada3.jpg" type="image/jpeg">
-        <img loading="lazy" src="build/img/destacada3.jpg" alt="Imagen Contacto">
+        <img src="build/img/destacada3.jpg" alt="imagen de contacto">
     </picture>
 
-    <h2>Llene el formulario de Contacto</h2>
-
+    <h2>Rellene el Formulario de Contacto</h2>
     <form class="formulario">
         <fieldset>
             <legend>Información Personal</legend>
 
-            <label for="nombre">Nombre</label>
-            <input type="text" placeholder="Tu Nombre" id="nombre">
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" placeholder="Tu Nombre">
 
-            <label for="email">E-mail</label>
-            <input type="email" placeholder="Tu Email" id="email">
+            <label for="email">E-Mail:</label>
+            <input type="email" name="email" id="email" placeholder="Tu E-Mail">
 
-            <label for="telefono">Teléfono</label>
-            <input type="tel" placeholder="Tu Teléfono" id="telefono">
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" name="telefono" id="telefono" placeholder="Tu Teléfono">
 
             <label for="mensaje">Mensaje:</label>
-            <textarea id="mensaje"></textarea>
+            <textarea name="mensaje" id="mensaje"></textarea>
         </fieldset>
 
+
         <fieldset>
-            <legend>Información sobre la propiedad</legend>
+            <legend>Información de la Propiedad</legend>
 
             <label for="opciones">Vende o Compra:</label>
-            <select id="opciones">
+            <select name="" id="opciones">
                 <option value="" disabled selected>-- Seleccione --</option>
-                <option value="Compra">Compra</option>
-                <option value="Vende">Vende</option>
+                <option value="compra">Compra</option>
+                <option value="vende">Vende</option>
             </select>
 
-            <label for="presupuesto">Precio o Presupuesto</label>
-            <input type="number" placeholder="Tu Precio o Presupuesto" id="presupuesto">
-
+            <label for="presupuesto">Precio o Presupuesto:</label>
+            <input type="number" id="presupuesto" placeholder="Tu Precio o Presupuesto">
         </fieldset>
 
         <fieldset>
-            <legend>Información sobre la propiedad</legend>
-
-            <p>Como desea ser contactado</p>
-
+            <legend>Contacto</legend>
+            <p>Como desea que nos pongamos en contacto</p>
             <div class="forma-contacto">
+
                 <label for="contactar-telefono">Teléfono</label>
                 <input name="contacto" type="radio" value="telefono" id="contactar-telefono">
 
-                <label for="contactar-email">E-mail</label>
+                <label for="contactar-email">E-Mail</label>
                 <input name="contacto" type="radio" value="email" id="contactar-email">
             </div>
 
             <p>Si eligió teléfono, elija la fecha y la hora</p>
 
             <label for="fecha">Fecha:</label>
-            <input type="date" id="fecha">
+            <input name="fecha" type="date" value="fecha" id="fecha">
 
             <label for="hora">Hora:</label>
-            <input type="time" id="hora" min="09:00" max="18:00">
-
+            <input name="hora" type="time" value="hora" id="hora" min="09:00" max="20:00">
         </fieldset>
 
         <input type="submit" value="Enviar" class="boton-verde">
     </form>
 </main>
 
-<?php include './includes/template/footer.php'; ?>
+
+<?php include './includes/templates/footer.php'; ?>
 
 
-<script src="build/js/bundle.min.js"></script>
-</body>
-
-</html>

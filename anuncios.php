@@ -32,7 +32,7 @@ include './includes/templates/header.php';
                             <p>3</p>
                         </li>
                     </ul>
-                    <a href="anuncio.php" class="boton boton-amarillo-block">
+                    <a href="anuncio.html" class="boton boton-amarillo-block">
                         Ver Propiedad
                     </a>
                 </div>
@@ -65,7 +65,7 @@ include './includes/templates/header.php';
                             <p>3</p>
                         </li>
                     </ul>
-                    <a href="anuncio.php" class="boton boton-amarillo-block">
+                    <a href="anuncio.html" class="boton boton-amarillo-block">
                         Ver Propiedad
                     </a>
                 </div>
@@ -98,7 +98,7 @@ include './includes/templates/header.php';
                             <p>5</p>
                         </li>
                     </ul>
-                    <a href="anuncio.php" class="boton boton-amarillo-block">
+                    <a href="anuncio.html" class="boton boton-amarillo-block">
                         Ver Propiedad
                     </a>
                 </div>
@@ -131,7 +131,7 @@ include './includes/templates/header.php';
                             <p>3</p>
                         </li>
                     </ul>
-                    <a href="anuncio.php" class="boton boton-amarillo-block">
+                    <a href="anuncio.html" class="boton boton-amarillo-block">
                         Ver Propiedad
                     </a>
                 </div>
@@ -164,7 +164,7 @@ include './includes/templates/header.php';
                             <p>3</p>
                         </li>
                     </ul>
-                    <a href="anuncio.php" class="boton boton-amarillo-block">
+                    <a href="anuncio.html" class="boton boton-amarillo-block">
                         Ver Propiedad
                     </a>
                 </div>
@@ -197,7 +197,7 @@ include './includes/templates/header.php';
                             <p>5</p>
                         </li>
                     </ul>
-                    <a href="anuncio.php" class="boton boton-amarillo-block">
+                    <a href="anuncio.html" class="boton boton-amarillo-block">
                         Ver Propiedad
                     </a>
                 </div>
@@ -213,8 +213,3 @@ include './includes/templates/header.php';
 <?php
 include './includes/templates/footer.php'
 ?>
-
-<script src="build/js/bundle.min.js"></script>
-</body>
-
-</html>

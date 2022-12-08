@@ -2,29 +2,30 @@
 include './includes/templates/header.php';
 ?>
 
+
 <main class="contenedor seccion contenido-centrado">
     <h1>Guía para la decoración de tu hogar</h1>
-
-
     <picture>
         <source srcset="build/img/destacada2.webp" type="image/webp">
         <source srcset="build/img/destacada2.jpg" type="image/jpeg">
         <img loading="lazy" src="build/img/destacada2.jpg" alt="imagen de la propiedad">
     </picture>
 
-    <p class="informacion-meta">Escrito el: <span>20/10/2021</span> por: <span>Admin</span> </p>
-
-
+    <p class="informacion-meta">Escrito el: <span>20/08/21</span> Por: <span>María Pinto</span></p>
     <div class="resumen-propiedad">
-        <p>Proin consequat viverra sapien, malesuada tempor tortor feugiat vitae. In dictum felis et nunc aliquet molestie. Proin tristique commodo felis, sed auctor elit auctor pulvinar. Nunc porta, nibh quis convallis sollicitudin, arcu nisl semper mi, vitae sagittis lorem dolor non risus. Vivamus accumsan maximus est, eu mollis mi. Proin id nisl vel odio semper hendrerit. Nunc porta in justo finibus tempor. Suspendisse lobortis dolor quis elit suscipit molestie. Sed condimentum, erat at tempor finibus, urna nisi fermentum est, a dignissim nisi libero vel est. Donec et imperdiet augue. Curabitur malesuada sodales congue. Suspendisse potenti. Ut sit amet convallis nisi.</p>
-
-        <p>Aliquam lectus magna, luctus vel gravida nec, iaculis ut augue. Praesent ac enim lorem. Quisque ac dignissim sem, non condimentum orci. Morbi a iaculis neque, ac euismod felis. Fusce augue quam, fermentum sed turpis nec, hendrerit dapibus ante. Cras mattis laoreet nibh, quis tincidunt odio fermentum vel. Nulla facilisi.</p>
+        <p>It is a long established fact that a reader will be distracted by the readable content of a page when
+            looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution
+            of letters, as opposed to using 'Content here, content here', making it look like readable English. Many
+            desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a
+            search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have
+            evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+            into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+            release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+            software like Aldus PageMaker including versions of Lorem Ipsum</p>
     </div>
 </main>
 
-<?php include './includes/template/footer.php'; ?>
-
-<script src="build/js/bundle.min.js"></script>
-</body>
-
-</html>
+<?php include './includes/templates/footer.php'; ?>
