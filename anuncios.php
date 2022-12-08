@@ -1,5 +1,6 @@
 <?php
-include './includes/templates/header.php';
+require 'includes/funciones.php';
+incluirTemplate('header');
 ?>
 
 <main class="contenedor">
@@ -32,7 +33,7 @@ include './includes/templates/header.php';
                             <p>3</p>
                         </li>
                     </ul>
-                    <a href="anuncio.html" class="boton boton-amarillo-block">
+                    <a href="anuncio.php" class="boton boton-amarillo-block">
                         Ver Propiedad
                     </a>
                 </div>
@@ -65,7 +66,7 @@ include './includes/templates/header.php';
                             <p>3</p>
                         </li>
                     </ul>
-                    <a href="anuncio.html" class="boton boton-amarillo-block">
+                    <a href="anuncio.php" class="boton boton-amarillo-block">
                         Ver Propiedad
                     </a>
                 </div>
@@ -98,7 +99,7 @@ include './includes/templates/header.php';
                             <p>5</p>
                         </li>
                     </ul>
-                    <a href="anuncio.html" class="boton boton-amarillo-block">
+                    <a href="anuncio.php" class="boton boton-amarillo-block">
                         Ver Propiedad
                     </a>
                 </div>
@@ -131,7 +132,7 @@ include './includes/templates/header.php';
                             <p>3</p>
                         </li>
                     </ul>
-                    <a href="anuncio.html" class="boton boton-amarillo-block">
+                    <a href="anuncio.php" class="boton boton-amarillo-block">
                         Ver Propiedad
                     </a>
                 </div>
@@ -164,7 +165,7 @@ include './includes/templates/header.php';
                             <p>3</p>
                         </li>
                     </ul>
-                    <a href="anuncio.html" class="boton boton-amarillo-block">
+                    <a href="anuncio.php" class="boton boton-amarillo-block">
                         Ver Propiedad
                     </a>
                 </div>
@@ -197,7 +198,7 @@ include './includes/templates/header.php';
                             <p>5</p>
                         </li>
                     </ul>
-                    <a href="anuncio.html" class="boton boton-amarillo-block">
+                    <a href="anuncio.php" class="boton boton-amarillo-block">
                         Ver Propiedad
                     </a>
                 </div>
