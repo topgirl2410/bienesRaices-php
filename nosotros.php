@@ -1,110 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include './includes/templates/header.php';
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienes Raices</title>
-    <link rel="stylesheet" href="build/css/app.css">
-</head>
+<main class="contenedor seccion">
+    <h1>Conoce sobre Nosotros</h1>
 
-<body>
-
-    <header class="header">
-        <div class="contenedor contenido-header">
-            <div class="barra">
-                <a href="/">
-                    <img src="build/img/logo.svg" alt="Logotipo de Bienes Raices">
-                </a>
-
-                <div class="mobile-menu">
-                    <img src="build/img/barras.svg" alt="icono menu responsive">
-                </div>
-
-                <div class="derecha">
-                    <img class="dark-mode-boton" src="build/img/dark-mode.svg">
-                    <nav class="navegacion">
-                        <a href="nosotros.php">Nosotros</a>
-                        <a href="anuncios.php">Anuncios</a>
-                        <a href="blog.php">Blog</a>
-                        <a href="contacto.php">Contacto</a>
-                    </nav>
-                </div>
-
-            </div>
-            <!--.barra-->
-        </div>
-    </header>
-
-    <main class="contenedor seccion">
-        <h1>Conoce sobre Nosotros</h1>
-
-        <div class="contenido-nosotros">
-            <div class="imagen">
-                <picture>
-                    <source srcset="build/img/nosotros.webp" type="image/webp">
-                    <source srcset="build/img/nosotros.jpg" type="image/jpeg">
-                    <img loading="lazy" src="build/img/nosotros.jpg" alt="Sobre Nosotros">
-                </picture>
-            </div>
-
-            <div class="texto-nosotros">
-                <blockquote>
-                    25 Años de experiencia
-                </blockquote>
-
-                <p>Proin consequat viverra sapien, malesuada tempor tortor feugiat vitae. In dictum felis et nunc
-                    aliquet molestie. Proin tristique commodo felis, sed auctor elit auctor pulvinar. Nunc porta, nibh
-                    quis convallis sollicitudin, arcu nisl semper mi, vitae sagittis lorem dolor non risus. Vivamus
-                    accumsan maximus est, eu mollis mi.</p>
-
-                <p>Aliquam lectus magna, luctus vel gravida nec, iaculis ut augue. Praesent ac enim lorem. Quisque ac
-                    dignissim sem, non condimentum orci. Morbi a iaculis neque, ac euismod felis. Fusce augue quam,
-                    fermentum sed turpis nec, hendrerit dapibus ante. Cras mattis laoreet nibh, quis tincidunt odio
-                    fermentum vel. Nulla facilisi.</p>
-            </div>
-        </div>
-    </main>
-
-    <section class="contenedor seccion">
-        <h1>Más Sobre Nosotros</h1>
-
-        <div class="iconos-nosotros">
-            <div class="icono">
-                <img src="build/img/icono1.svg" alt="Icono seguridad" loading="lazy">
-                <h3>Seguridad</h3>
-                <p>Possimus, suscipit repudiandae. Autem deserunt aliquid deleniti sit minus consectetur obcaecati
-                    molestiae dolorem natus dolores reiciendis tempore, explicabo cum nobis laudantium. Voluptates?</p>
-            </div>
-            <div class="icono">
-                <img src="build/img/icono2.svg" alt="Icono Precio" loading="lazy">
-                <h3>Precio</h3>
-                <p>Possimus, suscipit repudiandae. Autem deserunt aliquid deleniti sit minus consectetur obcaecati
-                    molestiae dolorem natus dolores reiciendis tempore, explicabo cum nobis laudantium. Voluptates?</p>
-            </div>
-            <div class="icono">
-                <img src="build/img/icono3.svg" alt="Icono Tiempo" loading="lazy">
-                <h3>A Tiempo</h3>
-                <p>Possimus, suscipit repudiandae. Autem deserunt aliquid deleniti sit minus consectetur obcaecati
-                    molestiae dolorem natus dolores reiciendis tempore, explicabo cum nobis laudantium. Voluptates?</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer seccion">
-        <div class="contenedor contenedor-footer">
-            <nav class="navegacion">
-                <a href="nosotros.php">Nosotros</a>
-                <a href="anuncios.php">Anuncios</a>
-                <a href="blog.php">Blog</a>
-                <a href="contacto.php">Contacto</a>
-            </nav>
+    <div class="contenido-nosotros">
+        <div class="imagen">
+            <picture>
+                <source srcset="build/img/nosotros.webp" type="image/webp">
+                <source srcset="build/img/nosotros.jpg" type="image/jpeg">
+                <img loading="lazy" src="build/img/nosotros.jpg" alt="Sobre Nosotros">
+            </picture>
         </div>
 
-        <p class="copyright">Todos los derechos Reservados 2021 &copy;</p>
-    </footer>
+        <div class="texto-nosotros">
+            <blockquote>
+                25 Años de experiencia
+            </blockquote>
 
-    <script src="build/js/bundle.min.js"></script>
+            <p>Proin consequat viverra sapien, malesuada tempor tortor feugiat vitae. In dictum felis et nunc
+                aliquet molestie. Proin tristique commodo felis, sed auctor elit auctor pulvinar. Nunc porta, nibh
+                quis convallis sollicitudin, arcu nisl semper mi, vitae sagittis lorem dolor non risus. Vivamus
+                accumsan maximus est, eu mollis mi.</p>
+
+            <p>Aliquam lectus magna, luctus vel gravida nec, iaculis ut augue. Praesent ac enim lorem. Quisque ac
+                dignissim sem, non condimentum orci. Morbi a iaculis neque, ac euismod felis. Fusce augue quam,
+                fermentum sed turpis nec, hendrerit dapibus ante. Cras mattis laoreet nibh, quis tincidunt odio
+                fermentum vel. Nulla facilisi.</p>
+        </div>
+    </div>
+</main>
+
+<section class="contenedor seccion">
+    <h1>Más Sobre Nosotros</h1>
+
+    <div class="iconos-nosotros">
+        <div class="icono">
+            <img src="build/img/icono1.svg" alt="Icono seguridad" loading="lazy">
+            <h3>Seguridad</h3>
+            <p>Possimus, suscipit repudiandae. Autem deserunt aliquid deleniti sit minus consectetur obcaecati
+                molestiae dolorem natus dolores reiciendis tempore, explicabo cum nobis laudantium. Voluptates?</p>
+        </div>
+        <div class="icono">
+            <img src="build/img/icono2.svg" alt="Icono Precio" loading="lazy">
+            <h3>Precio</h3>
+            <p>Possimus, suscipit repudiandae. Autem deserunt aliquid deleniti sit minus consectetur obcaecati
+                molestiae dolorem natus dolores reiciendis tempore, explicabo cum nobis laudantium. Voluptates?</p>
+        </div>
+        <div class="icono">
+            <img src="build/img/icono3.svg" alt="Icono Tiempo" loading="lazy">
+            <h3>A Tiempo</h3>
+            <p>Possimus, suscipit repudiandae. Autem deserunt aliquid deleniti sit minus consectetur obcaecati
+                molestiae dolorem natus dolores reiciendis tempore, explicabo cum nobis laudantium. Voluptates?</p>
+        </div>
+    </div>
+</section>
+
+<footer class="footer seccion">
+    <div class="contenedor contenedor-footer">
+        <nav class="navegacion">
+            <a href="nosotros.php">Nosotros</a>
+            <a href="anuncios.php">Anuncios</a>
+            <a href="blog.php">Blog</a>
+            <a href="contacto.php">Contacto</a>
+        </nav>
+    </div>
+
+    <p class="copyright">Todos los derechos Reservados 2021 &copy;</p>
+</footer>
+
+<script src="build/js/bundle.min.js"></script>
 </body>
 
 </html>
