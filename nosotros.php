@@ -61,6 +61,4 @@ incluirTemplate('header');
 </section>
 
 
-<?php
-include './includes/templates/footer.php';
-?>
+<?php incluirTemplate('footer') ?>
