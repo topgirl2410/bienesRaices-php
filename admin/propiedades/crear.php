@@ -27,6 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //var_dump($_POST);
     //echo "</pre>";
 
+
+    echo "<pre>";
+    var_dump($_FILES);
+    echo "</pre>";
+
     $titulo = mysqli_real_escape_string($db, $_POST['titulo']);
     $precio = mysqli_real_escape_string($db, $_POST['precio']);
     $descripcion = mysqli_real_escape_string($db, $_POST['descripcion']);
@@ -36,6 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $vendedores_id = mysqli_real_escape_string($db, $_POST['vendedores_id']);
     $creado = date('Y/m/d');
 
+    // Asignar flies hacia una variable
+    $imagen = $_FILES['imagen'];
+
 
     if (!$titulo) {
         $errores[] = "Debes añadir un titulo";
@@ -43,6 +51,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!$precio) {
         $errores[] = "Debes añadir un precio";
+    }
+
+    if (!$imagen['name'] || $imagen['error']) {
+        $errores[] = 'La Imagen es Obligatoria';
+    }
+    // Validar imagen por tamaño (300 kb max)
+    $medida = 1000 * 300;
+
+    if ($imagen['size'] > $medida) {
+        $errores[] = "La imagen es muy pesada";
     }
 
     if (strlen($descripcion) < 50) {
@@ -64,6 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$vendedores_id) {
         $errores[] = "Elige un vendedor";
     }
+
+
 
     // Revisar que el array de errores este vacio
     if (empty($errores)) {
@@ -98,7 +118,7 @@ incluirTemplate('header');
     <?php endforeach; ?>
 
 
-    <form class="formulario" method="POST" action="/admin/propiedades/crear.php">
+    <form class="formulario" method="POST" action="/admin/propiedades/crear.php" enctype="multipart/form-data">
         <fieldset>
             <legend>
                 Información General
@@ -111,7 +131,7 @@ incluirTemplate('header');
             <input type="number" id="precio" name="precio" placeholder="Precio Propiedad" value="<?php echo $precio; ?>">
 
             <label for="imagen">Imagen:</label>
-            <input type="file" id="imagen" accept="image/jpeg, image/png">
+            <input type="file" id="imagen" accept="image/jpeg, image/png" name="imagen">
 
             <label for="descripcion">Descripción:</label>
             <textarea id="descripcion" name="descripcion"><?php echo $descripcion; ?></textarea>
@@ -136,8 +156,12 @@ incluirTemplate('header');
             <select name="vendedores_id">
                 <option value="">-- Selecciona Vendedor --</option>
                 <?php while ($vendedores_id = mysqli_fetch_assoc($resultado)) : ?>
-                    <option <?php echo $vendedores_id === $vendedores_id['id'] ? 'selected' : ''; ?> value="<?php echo $vendedores_id['id'];
-                                                                                                            ?>"><?php echo $vendedores_id['nombre'] . ' ' . $vendedores_id['apellido']; ?>
+                    <option <?php echo $vendedores_id === $vendedores_id['id']
+                                ? 'selected' : '';
+                            ?> value="<?php echo $vendedores_id['id'];
+                                        ?>">
+                        <?php echo $vendedores_id['nombre'] . ' ' . $vendedores_id['apellido'];
+                        ?>
                     </option>
                 <?php endwhile; ?>
             </select>
