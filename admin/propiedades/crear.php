@@ -1,7 +1,12 @@
 <?php
 
+// Base de datos
 require '../../includes/config/database.php';
 $db = conectarDB();
+
+// Consultar para obteber los vendedores
+$consulta = "SELECT * FROM vendedores";
+$resultado = mysqli_query($db, $consulta);
 
 // Arreglo con mensajes de errores
 $errores = [];
@@ -18,6 +23,9 @@ $vendedores_id = '';
 
 // Ejecutar el código después de que el usuario envia el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    //echo "<pre>";
+    //var_dump($_POST);
+    //echo "</pre>";
 
     $titulo = $_POST['titulo'];
     $precio = $_POST['precio'];
@@ -26,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $wc = $_POST['wc'];
     $parking = $_POST['parking'];
     $vendedores_id = $_POST['vendedores_id'];
+    $creado = date('Y/m/d');
 
 
     if (!$titulo) {
@@ -59,16 +68,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Revisar que el array de errores este vacio
     if (empty($errores)) {
         // Insertar en la base de datos
-        $query = " INSERT INTO propiedades ( titulo, precio, descripcion, habitaciones, wc, parking,
-    vendedores_id) VALUES ( '$titulo', '$precio', '$descripcion', '$habitaciones', '$wc', '$parking',
+        $query = " INSERT INTO propiedades ( titulo, precio, descripcion, habitaciones, wc, parking, creado,
+    vendedores_id) VALUES ( '$titulo', '$precio', '$descripcion', '$habitaciones', '$wc', '$parking', '$creado',
     '$vendedores_id')";
 
-        echo $query;
+        //echo $query;
 
         $resultado = mysqli_query($db, $query);
 
         if ($resultado) {
-            echo "Insertado Correctamente";
+            //Redireccionar al usuario
+            header('Location: /admin');
         }
     }
 }
@@ -98,7 +108,7 @@ incluirTemplate('header');
             <input type="text" id="titulo" name="titulo" placeholder="Titulo Propiedad" value="<?php echo $titulo; ?>">
 
             <label for="precio">Precio:</label>
-            <input type="number" id="precio" name="precio" placeholder="Precio Propiedad"value="<?php echo $precio; ?>" >
+            <input type="number" id="precio" name="precio" placeholder="Precio Propiedad" value="<?php echo $precio; ?>">
 
             <label for="imagen">Imagen:</label>
             <input type="file" id="imagen" accept="image/jpeg, image/png">
@@ -124,13 +134,16 @@ incluirTemplate('header');
         <fieldset>
             <legend>Vendedor</legend>
             <select name="vendedores_id">
-                <option disabled selected value="<?php echo $vendedores_id; ?>">-- Selecciona Vendedor --</option>
-                <option value="1">María</option>
-                <option value="2">Marco</option>
+                <option value="">-- Selecciona Vendedor --</option>
+                <?php while ($vendedores_id = mysqli_fetch_assoc($resultado)) : ?>
+                    <option <?php echo $vendedores_id === $vendedores_id['id'] ? 'selected' : ''; ?> value="<?php echo $vendedores_id['id'];
+                                                                                                            ?>"><?php echo $vendedores_id['nombre'] . ' ' . $vendedores_id['apellido']; ?>
+                    </option>
+                <?php endwhile; ?>
             </select>
         </fieldset>
-
         <input class="boton boton-verde" type="submit" value="Crear Propiedad">
+
     </form>
 </main>
 
