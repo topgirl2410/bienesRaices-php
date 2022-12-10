@@ -3,11 +3,11 @@
 require '../../includes/config/database.php';
 $db = conectarDB();
 
+// Arreglo con mensajes de errores
+$errores = [];
 
+// Ejecutar el código después de que el usuario envia el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    echo "<pre>";
-    var_dump($_POST);
-    echo "</pre>";
 
     $titulo = $_POST['titulo'];
     $precio = $_POST['precio'];
@@ -18,20 +18,54 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $vendedores_id = $_POST['vendedores_id'];
 
 
-    // Insertar en la base de datos
+    if (!$titulo) {
+        $errores[] = "Debes añadir un titulo";
+    }
 
-    $query = " INSERT INTO propiedades ( titulo, precio, descripcion, habitaciones, wc, parking,
+    if (!$precio) {
+        $errores[] = "Debes añadir un precio";
+    }
+
+    if (strlen($descripcion) < 50) {
+        $errores[] = "La descripción es obligatoria y debe tener al menos 50 caracteres";
+    }
+
+    if (!$habitaciones) {
+        $errores[] = "Debes añadir el número de habitaciones";
+    }
+
+    if (!$wc) {
+        $errores[] = "Debes añadir el número de baños";
+    }
+
+    if (!$parking) {
+        $errores[] = "Debes añadir el número de plazas de aparcamiento";
+    }
+
+    if (!$vendedores_id) {
+        $errores[] = "Elige un vendedor";
+    }
+
+    // Revisar que el array de errores este vacio
+    if (empty($errores)) {
+        // Insertar en la base de datos
+        $query = " INSERT INTO propiedades ( titulo, precio, descripcion, habitaciones, wc, parking,
     vendedores_id) VALUES ( '$titulo', '$precio', '$descripcion', '$habitaciones', '$wc', '$parking',
     '$vendedores_id')";
 
-    // echo $query;
+        echo $query;
 
-    $resultado = mysqli_query($db, $query);
+        $resultado = mysqli_query($db, $query);
 
-    if ($resultado) {
-        echo "Insertado Correctamente";
+        if ($resultado) {
+            echo "Insertado Correctamente";
+        }
     }
 }
+
+
+
+
 
 
 require '../../includes/funciones.php';
@@ -41,6 +75,13 @@ incluirTemplate('header');
 <main class="contenedor seccion">
     <h1>Crear</h1>
     <a href="/admin/" class="boton boton-verde">Volver a Inicio</a>
+
+    <?php foreach ($errores as $error) :  ?>
+        <div class="alerta error">
+            <?php echo $error; ?>
+        </div>
+    <?php endforeach; ?>
+
 
     <form class="formulario" method="POST" action="/admin/propiedades/crear.php">
         <fieldset>
@@ -78,6 +119,7 @@ incluirTemplate('header');
         <fieldset>
             <legend>Vendedor</legend>
             <select name="vendedores_id">
+                <option disabled selected value="">-- Selecciona Vendedor --</option>
                 <option value="1">María</option>
                 <option value="2">Marco</option>
             </select>
