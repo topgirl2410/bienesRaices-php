@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     /**  Subida de archivos **/
-    $medida = 1000 * 300;
+    $medida = 1000 * 1000;
     if ($imagen['size'] > $medida) {
         $errores[] = 'La imagen es demasiado pesada';
     }

@@ -35,15 +35,12 @@ $parking = $propiedad['parking'];
 $vendedores_id = $propiedad['vendedores_id'];
 $imagenPropiedad = $propiedad['imagen'];
 
-
-
 // Ejecutar el código después de que el usuario envia el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     //echo "<pre>";
     //var_dump($_FILES);
     //echo "</pre>";
-
 
     $titulo = mysqli_real_escape_string($db, $_POST['titulo']);
     $precio = mysqli_real_escape_string($db, $_POST['precio']);
@@ -57,7 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Asignar files hacia una variable
     $imagen = $_FILES['imagen'];
 
-
     if (!$titulo) {
         $errores[] = "Debes añadir un titulo";
     }
@@ -65,8 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$precio) {
         $errores[] = "Debes añadir un precio";
     }
-
-
 
     if (strlen($descripcion) < 50) {
         $errores[] = "La descripción es obligatoria y debe tener al menos 50 caracteres";
@@ -97,27 +91,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Revisar que el array de errores este vacio
     if (empty($errores)) {
         // Crear carpeta 
-        //$carpetaImg = '../../imagenes';
+        $carpetaImg = '../../imagenes';
 
-        //if (!is_dir($carpetaImg)) {
-        //mkdir($carpetaImg);
-        //}
-        // Generar nombre unico para las imagenes
-        //$nombreImagen = md5(uniqid(rand(), true) . $imagen['name']) . ".jpg";
+        if (!is_dir($carpetaImg)) {
+            mkdir($carpetaImg);
+        }
 
-        // Subir la imagen
-        //if ($imagen['type'] === "image/jpeg" || $imagen['type'] === "image/png") {
-        //move_uploaded_file($imagen['tmp_name'], $carpetaImg . "/" . $nombreImagen);
-        //} elseif ($imagen['type'] !== "image/jpeg" || $imagen['type'] !== "image/png") {
-        //$errores[] .= "Formato de imagen erroneo";
-        //}
+        $nombreImagen = '';
 
+        if ($imagen['name']) {
+            // Eliminar la imagen previa
+            unlink($carpetaImg . $propiedad['imagen']);
+
+            // Generar nombre unico para las imagenes
+            $nombreImagen = md5(uniqid(rand(), true) . $imagen['name']) . ".jpg";
+
+            // Subir la imagen
+            if ($imagen['type'] === "image/jpeg" || $imagen['type'] === "image/png") {
+                move_uploaded_file($imagen['tmp_name'], $carpetaImg . "/" . $nombreImagen);
+            } elseif ($imagen['type'] !== "image/jpeg" || $imagen['type'] !== "image/png") {
+                $errores[] .= "Formato de imagen erroneo";
+            }
+        } else {
+            $nombreImagen = $propiedad['imagen'];
+        }
 
         // Insertar en la base de datos
-        $query = " UPDATE propiedades SET titulo = '${titulo}', precio = '${precio}', descripcion = '${descripcion}',
+        $query = " UPDATE propiedades SET titulo = '${titulo}', precio = '${precio}', imagen = '${nombreImagen}', descripcion = '${descripcion}',
     habitaciones = ${habitaciones},  wc = {$wc}, parking = ${parking}, vendedores_id = ${vendedores_id} WHERE id = ${id} ";
-
-
 
         //echo $query;
 
