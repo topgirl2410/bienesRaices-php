@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     var_dump($_FILES);
     echo "</pre>";
 
+
     $titulo = mysqli_real_escape_string($db, $_POST['titulo']);
     $precio = mysqli_real_escape_string($db, $_POST['precio']);
     $descripcion = mysqli_real_escape_string($db, $_POST['descripcion']);
@@ -41,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $vendedores_id = mysqli_real_escape_string($db, $_POST['vendedores_id']);
     $creado = date('Y/m/d');
 
-    // Asignar flies hacia una variable
+    // Asignar files hacia una variable
     $imagen = $_FILES['imagen'];
 
 
@@ -53,15 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errores[] = "Debes añadir un precio";
     }
 
-    if (!$imagen['name'] || $imagen['error']) {
-        $errores[] = 'La Imagen es Obligatoria';
-    }
-    // Validar imagen por tamaño (1 mega max)
-    $medida = 1000 * 1000;
 
-    if ($imagen['size'] > $medida) {
-        $errores[] = "La imagen es muy pesada";
-    }
 
     if (strlen($descripcion) < 50) {
         $errores[] = "La descripción es obligatoria y debe tener al menos 50 caracteres";
@@ -83,38 +76,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errores[] = "Elige un vendedor";
     }
 
+
+    if (!$imagen['name']) {
+        $errores[] = "La imagen es obligatoria";
+    }
+
+    /**  Subida de archivos **/
+    $medida = 1000 * 300;
+    if ($imagen['size'] > $medida) {
+        $errores[] = 'La imagen es demasiado pesada';
+    }
+
     // Revisar que el array de errores este vacio
     if (empty($errores)) {
-
-        /**  Subida de archivos **/
-
         // Crear carpeta 
-        $carpetaImg = '../../imagenes/';
+        $carpetaImg = '../../imagenes';
+
         if (!is_dir($carpetaImg)) {
             mkdir($carpetaImg);
         }
-
         // Generar nombre unico para las imagenes
-        $nombreImg = md5(uniqid(rand(), true)) . '.jpg';
+        $nombreImagen = md5(uniqid(rand(), true) . $imagen['name']) . ".jpg";
 
         // Subir la imagen
-        move_uploaded_file($imagen['tmp_name'], $carpetaImg . $nombreImg);
-
-        // Insertar en la base de datos
-        $query = " INSERT INTO propiedades ( titulo, precio, imagen, descripcion, habitaciones, wc, parking, creado,
-    vendedores_id) VALUES ( '$titulo', '$precio', '$imagen', '$descripcion', '$habitaciones', '$wc', '$parking', '$creado',
-    '$vendedores_id')";
-
-        //echo $query;
-
-        $resultado = mysqli_query($db, $query);
-
-        if ($resultado) {
-            //Redireccionar al usuario
-            header('Location: /admin?resultado=1');
+        if ($imagen['type'] === "image/jpeg" || $imagen['type'] === "image/png") {
+            move_uploaded_file($imagen['tmp_name'], $carpetaImg . "/" . $nombreImagen );
+        } elseif ($imagen['type'] !== "image/jpeg" || $imagen['type'] !== "image/png") {
+            $errores[] .= "Formato de imagen erroneo";
         }
     }
+
+    // Insertar en la base de datos
+    $query = " INSERT INTO propiedades ( titulo, precio, imagen, descripcion, habitaciones, wc, parking, creado,
+    vendedores_id) VALUES ( '$titulo', '$precio', '$nombreImagen', '$descripcion', '$habitaciones', '$wc', '$parking', '$creado',
+    '$vendedores_id')";
+
+    //echo $query;
+
+    $resultado = mysqli_query($db, $query);
+
+    if ($resultado) {
+        //Redireccionar al usuario
+        header('Location: /admin?resultado=1');
+    }
 }
+
 
 require '../../includes/funciones.php';
 incluirTemplate('header');
