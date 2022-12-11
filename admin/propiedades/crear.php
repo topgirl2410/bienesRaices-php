@@ -182,6 +182,7 @@ incluirTemplate('header');
         <input class="boton boton-verde" type="submit" value="Crear Propiedad">
 
     </form>
+
 </main>
 
 <?php incluirTemplate('footer') ?>
