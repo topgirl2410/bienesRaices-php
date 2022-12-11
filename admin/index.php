@@ -62,6 +62,8 @@ incluirTemplate('header');
 
 // Cerrar la conexion a la base de datos
 
+mysqli_close($bd);
+
 
 incluirTemplate('footer')
 ?>
