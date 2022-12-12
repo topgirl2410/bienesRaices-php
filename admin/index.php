@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $resultado = mysqli_query($db, $query);
 
         if ($resultado) {
-            header('Location: /admin');
+            header('Location: /admin?resultado=3');
         }
     }
 }
@@ -50,7 +50,12 @@ incluirTemplate('header');
         <p class="alerta exito">Anuncio Creado Correctamente</p>
     <?php elseif (intval($resultado) === 2) : ?>
         <p class="alerta exito">Anuncio Actualizado Correctamente</p>
+
+    <?php elseif (intval($resultado) === 3) : ?>
+        <p class="alerta exito">Anuncio Eliminado Correctamente</p>
     <?php endif; ?>
+
+
     <a href="/admin/propiedades/crear.php" class="boton boton-verde">Nueva Propiedad</a>
 
     <table class="propiedades">
