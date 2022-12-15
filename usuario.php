@@ -11,9 +11,13 @@ $email = "correo@correo.com";
 $password = "123456";
 
 
-//  Query para crear al usuario
-$query = " INSERT INTO usuarios(email, password) VALUES ('${email}', '${password}';)";
-echo $query;
+//$passwordHash = password_hash($password, PASSWORD_BCRYPT);
 
-// Agregarlo a la base de datos
+
+
+//  Query para crear al usuario
+$query = " INSERT INTO usuarios(email, password) VALUES ('${email}', '${password}')";
+
+
+
 mysqli_query($db, $query);
