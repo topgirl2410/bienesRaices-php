@@ -11,12 +11,12 @@ $email = "correo@correo.com";
 $password = "123456";
 
 
-//$passwordHash = password_hash($password, PASSWORD_BCRYPT);
+$passwordHash = password_hash($password, PASSWORD_BCRYPT);
 
 
 
 //  Query para crear al usuario
-$query = " INSERT INTO usuarios(email, password) VALUES ('${email}', '${password}')";
+$query = " INSERT INTO usuarios(email, password) VALUES ('${email}', '${passwordHash}')";
 
 
 
