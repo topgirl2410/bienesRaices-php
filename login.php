@@ -20,6 +20,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$password) {
         $errores[] = "El password es obligatorio";
     }
+
+    if (empty($errores)) {
+        // Revisar si un usuario existe o no
+        $query = "SELECT * FROM usuarios WHERE email = '${email}' ";
+        $resultado = mysqli_query($db, $query);
+
+        var_dump($resultado);
+
+        if($resultado->num_rows) {
+            // Revisar si el password es correcto
+
+            
+        } else {
+            $errores[] = "El usuario no existe";
+        }
+    }
 }
 
 
@@ -57,4 +73,3 @@ incluirTemplate('header');
 <?php
 incluirTemplate('footer');
 ?>
-
