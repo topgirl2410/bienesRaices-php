@@ -9,12 +9,7 @@ $errores = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    echo "<pre>";
-    var_dump($_POST);
-    echo "</pre>";
-
     $email = mysqli_real_escape_string($db, filter_var($_POST['email'], FILTER_VALIDATE_EMAIL));
-    var_dump($email);
 
     $password = mysqli_real_escape_string($db, $_POST['password']);
 
@@ -37,7 +32,7 @@ incluirTemplate('header');
     <h1>Iniciar Sesión</h1>
     <?php foreach ($errores as $error) : ?>
         <div class="alerta error">
-            <?php echo $error ?>
+            <?php echo $error; ?>
         </div>
 
     <?php endforeach; ?>
@@ -62,3 +57,4 @@ incluirTemplate('header');
 <?php
 incluirTemplate('footer');
 ?>
+
